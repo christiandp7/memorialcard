@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add rooks
+  /usr/local/bin/node /usr/local/bin/yarn add @reach/combobox
 
 PATH: 
   /home/christiandp7/.vscode-server/bin/e7d7e9a9348e6a8cc8c03f877d39cb72e5dfb1ff/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Python39/Scripts/:/mnt/c/Python39/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Program Files/Calibre2/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/christiandp7/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/christiandp7/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/christiandp7/AppData/Local/Yarn/bin
@@ -29,16 +29,18 @@ npm manifest:
     "dependencies": {
       "classnames": "^2.3.1",
       "react": "^17.0.0",
+      "react-cool-onclickoutside": "^1.6.2",
       "react-dom": "^17.0.0",
       "react-icons": "^4.2.0",
       "react-loader-spinner": "^4.0.0",
-      "react-places-autocomplete": "^7.3.0",
-      "react-router-dom": "^5.3.0"
+      "react-modal": "^3.14.3",
+      "react-router-dom": "^5.3.0",
+      "use-places-autocomplete": "^1.9.4"
     },
     "devDependencies": {
+      "@types/googlemaps": "^3.43.3",
       "@types/react": "^17.0.0",
       "@types/react-dom": "^17.0.0",
-      "@types/react-places-autocomplete": "^7.2.8",
       "@types/react-router-dom": "^5.1.9",
       "@vitejs/plugin-react-refresh": "^1.3.1",
       "autoprefixer": "^10.3.4",
@@ -318,10 +320,10 @@ Lockfile:
       estree-walker "^2.0.1"
       picomatch "^2.2.2"
   
-  "@types/google.maps@*":
-    version "3.45.6"
-    resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.45.6.tgz#441a7bc76424243b307596fc8d282a435a979ebd"
-    integrity sha512-BzGzxs8UXFxeP8uN/0nRgGbsbpYQxSCKsv/7S8OitU7wwhfFcqQSm5aAcL1nbwueMiJ/VVmIZKPq69s0kX5W+Q==
+  "@types/googlemaps@^3.43.3":
+    version "3.43.3"
+    resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.43.3.tgz#70cf962154a160fe78bcd69d6ccc296dd9175b1f"
+    integrity sha512-ZWNoz/O8MPEpiajvj7QiqCY8tTLFNqNZ/a+s+zTV58wFVNAvvqV4bdGfnsjTb5Cs4V6wEsLrX8XRhmnyYJ2Tdg==
   
   "@types/history@*":
     version "4.7.9"
@@ -348,14 +350,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
     integrity sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==
     dependencies:
-      "@types/react" "*"
-  
-  "@types/react-places-autocomplete@^7.2.8":
-    version "7.2.8"
-    resolved "https://registry.yarnpkg.com/@types/react-places-autocomplete/-/react-places-autocomplete-7.2.8.tgz#f356efd126129c87be9ba6333b4952e1113a77a4"
-    integrity sha512-NFhPvD/uYiBVOrcXEbsFhLEFm5vFSDSYn37iv/8+iPfYg1b6O/UhT/Qphl2NbkkNSkBVEhBxJcHNHOCK5nnJag==
-    dependencies:
-      "@types/google.maps" "*"
       "@types/react" "*"
   
   "@types/react-router-dom@^5.1.9":
@@ -707,6 +701,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
     integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
   
+  exenv@^1.2.0:
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+    integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
+  
   fast-glob@^3.2.7:
     version "3.2.7"
     resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.7.tgz#fd6cb7a2d7e9aa7a7846111e85a196d6b2f766a1"
@@ -1009,11 +1008,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
     integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
   
-  lodash.debounce@^4.0.8:
-    version "4.0.8"
-    resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
-    integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
-  
   lodash.topath@^4.5.2:
     version "4.5.2"
     resolved "https://registry.yarnpkg.com/lodash.topath/-/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
@@ -1024,7 +1018,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
     integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
   
-  loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
+  loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
     integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -1223,7 +1217,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
     integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
   
-  prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -1252,6 +1246,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
     integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
   
+  react-cool-onclickoutside@^1.6.2:
+    version "1.6.2"
+    resolved "https://registry.yarnpkg.com/react-cool-onclickoutside/-/react-cool-onclickoutside-1.6.2.tgz#e100e6fe577c325fba1a1cb23d6faa84f335ffc6"
+    integrity sha512-x999CH2gHLYnW7LvaLOFNt4/CEWaFiqMrGCkzjDZJC+7FuIsgZZ8CZ4urb9K9lSukmlv8WFGU94BzWPhQRJ4lQ==
+  
   react-dom@^17.0.0:
     version "17.0.2"
     resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -1271,6 +1270,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
   
+  react-lifecycles-compat@^3.0.0:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+    integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  
   react-loader-spinner@^4.0.0:
     version "4.0.0"
     resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-4.0.0.tgz#43d9e71b0574219f64216933c28ef5faa12262f6"
@@ -1278,13 +1282,15 @@ Lockfile:
     dependencies:
       prop-types "^15.7.2"
   
-  react-places-autocomplete@^7.3.0:
-    version "7.3.0"
-    resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.3.0.tgz#81a2345ae4a6fc35d7a712ccd4850d497553ba1b"
-    integrity sha512-86wcHC69JATvWBnIS/yCsBHLtwzOGcnx3Ye94u74yTrz1jLRC/txkVDkf6rvC+Jq3zNe/tAg/W53x0EaH1ZPPw==
+  react-modal@^3.14.3:
+    version "3.14.3"
+    resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.14.3.tgz#7eb7c5ec85523e5843e2d4737cc17fc3f6aeb1c0"
+    integrity sha512-+C2KODVKyu20zHXPJxfOOcf571L1u/EpFlH+oS/3YDn8rgVE51QZuxuuIwabJ8ZFnOEHaD+r6XNjqwtxZnXO0g==
     dependencies:
-      lodash.debounce "^4.0.8"
-      prop-types "^15.5.8"
+      exenv "^1.2.0"
+      prop-types "^15.7.2"
+      react-lifecycles-compat "^3.0.0"
+      warning "^4.0.3"
   
   react-refresh@^0.10.0:
     version "0.10.0"
@@ -1568,6 +1574,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
     integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
   
+  use-places-autocomplete@^1.9.4:
+    version "1.9.4"
+    resolved "https://registry.yarnpkg.com/use-places-autocomplete/-/use-places-autocomplete-1.9.4.tgz#e93b8fabeb0208f835ca8cc3a30bc104cdab3c7f"
+    integrity sha512-iifiwYcjGb0G9HATbwyKpeJgOxWuZwBgPnKGzYgsB2pe5LFGq9udGGFeP0opT/wFk4W/dG8xKTqW0PxLJLc+OQ==
+  
   util-deprecate@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -1599,6 +1610,13 @@ Lockfile:
       rollup "^2.38.5"
     optionalDependencies:
       fsevents "~2.3.2"
+  
+  warning@^4.0.3:
+    version "4.0.3"
+    resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+    integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+    dependencies:
+      loose-envify "^1.0.0"
   
   wrappy@1:
     version "1.0.2"

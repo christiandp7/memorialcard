@@ -1,34 +1,63 @@
-import React, { FC, useState } from 'react'
+import React, { FC, SyntheticEvent, useState } from 'react'
 import cn from 'classnames'
 import s from './PlaceInput.module.css'
-import PlacesAutocomplete, {
-	geocodeByAddress,
-	getLatLng,
-} from 'react-places-autocomplete'
 import { LocationIcon } from '../svg'
 import Loader from 'react-loader-spinner'
-import SuggestionItem from '@components/SuggestionItem'
+import usePlacesAutocomplete, {
+	getGeocode,
+	getLatLng,
+	Suggestion,
+} from 'use-places-autocomplete'
+import useOnclickOutside from 'react-cool-onclickoutside'
+import {
+	Combobox,
+	ComboboxInput,
+	ComboboxPopover,
+	ComboboxList,
+	ComboboxOption,
+} from '@reach/combobox'
+// import '@reach/combobox/styles.css'
+
+const MAX_LENGTH = 40
 
 const PlaceInput = () => {
-	const [address, setAddress] = useState('')
+	const {
+		ready,
+		value,
+		suggestions: { status, data, loading },
+		setValue,
+		clearSuggestions,
+	} = usePlacesAutocomplete({
+		requestOptions: {
+			/* Define search scope here */
+			// types: [
+			// 	'country',
+			// 	'locality',
+			// 	'political',
+			// 	'geocode',
+			// 	'sublocality',
+			// 	'administrative_area_level_3',
+			// 	'postal_code',
+			// 	'town_square',
+			// 	'neighborhood',
+			// ],
+		},
+		debounce: 300,
+	})
 
-	const handleChange = (addr: string) => {
-		if (addr.length < 40) {
-			setAddress(addr)
+	const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+		if (e.target.value.length < 40) {
+			setValue(e.target.value)
 		}
 	}
 
-	const handleSubmit = (e: React.SyntheticEvent): void => {
-		e.preventDefault()
-		// trigger modal
-		console.log(address)
+	const handleSelect = (val: string): void => {
+		setValue(val, false)
 	}
 
-	const handleSelect = (addr: string) => {
-		geocodeByAddress(addr)
-			.then(results => getLatLng(results[0]))
-			.then(latLng => console.log('Success', latLng))
-			.catch(error => console.error('Error', error))
+	const handleSubmit = (e: SyntheticEvent): void => {
+		e.preventDefault()
+		console.log(value)
 	}
 
 	return (
@@ -40,48 +69,49 @@ const PlaceInput = () => {
 				<p>location</p>
 			</div>
 			<form onSubmit={handleSubmit} className={s.form}>
-				<PlacesAutocomplete
-					value={address}
-					onChange={handleChange}
-					onSelect={handleSelect}>
-					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-						<div className={s.inputContainer}>
-							<input
-								{...getInputProps({
-									placeholder: 'ciudad, país',
-									className: s.inputBox,
-									name: 'place',
-									maxLength: 40,
-								})}
-							/>
-							<div className={s.inputIcon}>
-								{loading ? (
-									<Loader type="Oval" color="#AAAAAA" width={18} height={18} />
-								) : (
-									<LocationIcon />
-								)}
-							</div>
-							<div
-								className={cn(s.dropdownContainer, {
-									[s.dropDownOpen]: suggestions.length > 0,
-								})}>
-								{suggestions.map(suggestion => (
-									<React.Fragment key={suggestion.id}>
-										<SuggestionItem
-											{...getSuggestionItemProps(suggestion, {
-												suggestion,
-												loading,
-												setAddress,
-											})}
+				<Combobox
+					className={s.inputContainer}
+					onSelect={handleSelect}
+					aria-labelledby="place">
+					<ComboboxInput
+						className={s.inputBox}
+						value={value}
+						onChange={handleInput}
+						disabled={!ready}
+						placeholder="ciudad, país"
+						maxLength={MAX_LENGTH}
+					/>
+					<div className={s.inputIcon}>
+						{loading ? (
+							<Loader type="Oval" color="#AAAAAA" width={18} height={18} />
+						) : (
+							<LocationIcon />
+						)}
+					</div>
+					<ComboboxPopover
+						className={cn(s.dropdownContainer, {
+							[s.dropDownOpen]: status === 'OK',
+						})}>
+						<ComboboxList>
+							{status === 'OK' &&
+								data
+									.filter(sugg => sugg.description.length < MAX_LENGTH)
+									.map(({ place_id, description }) => (
+										<ComboboxOption
+											key={place_id}
+											value={description}
+											className={s.option}
 										/>
-									</React.Fragment>
-								))}
-							</div>
-						</div>
-					)}
-				</PlacesAutocomplete>
+									))}
+						</ComboboxList>
+					</ComboboxPopover>
+				</Combobox>
 				<div className={s.buttonContainer}>
-					{address.length > 5 && <button className={s.submitButton}>Go!</button>}
+					{value.length > 6 && (
+						<button type="submit" className={s.submitButton}>
+							Go!
+						</button>
+					)}
 				</div>
 			</form>
 		</div>

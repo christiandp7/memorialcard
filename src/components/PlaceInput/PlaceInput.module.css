@@ -45,13 +45,22 @@
 }
 
 .dropdownContainer {
-	@apply absolute left-0 top-full;
+	@apply bg-white;
 	@apply w-full;
 	@apply z-10;
 }
 .dropDownOpen {
 	@apply border-l-[1px] border-r-[1px] border-b-[1px];
 	@apply border-primary border-solid;
+}
+
+.option {
+	@apply px-2 py-1;
+	@apply cursor-pointer;
+	@apply hover:bg-primary hover:text-white;
+	&[aria-selected='true'] {
+		@apply bg-primary text-white;
+	}
 }
 
 .buttonContainer {
