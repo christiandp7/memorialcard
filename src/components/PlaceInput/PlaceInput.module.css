@@ -1,0 +1,51 @@
+.root {
+	@apply flex flex-col items-center justify-center;
+	@apply w-full;
+	@apply mb-10;
+}
+
+.labels {
+	letter-spacing: 0.2rem;
+	& p {
+		@apply text-center;
+	}
+}
+
+.inputContainer {
+	@apply relative w-full max-w-sm;
+	@apply mt-4;
+}
+
+.inputBox {
+	@apply w-full;
+	@apply bg-grayBg text-grayText;
+	@apply border-[1px] border-solid border-grayBorder;
+	@apply focus:border-primary focus:text-primary;
+	@apply px-6 py-1 text-center;
+	@apply outline-none;
+	&:focus {
+		& .inputIcon {
+			& svg {
+				& path {
+					stroke: #000;
+				}
+			}
+		}
+	}
+}
+
+.inputIcon {
+	@apply absolute right-0 top-0 h-full;
+	@apply flex items-center justify-center;
+	@apply pr-2;
+}
+
+.dropdownContainer {
+	@apply absolute left-0 top-full;
+	/* top: calc(100% - 1px); */
+	@apply w-full;
+}
+.dropDownOpen {
+	@apply border-l-[1px] border-r-[1px] border-b-[1px];
+	@apply border-primary border-solid;
+}

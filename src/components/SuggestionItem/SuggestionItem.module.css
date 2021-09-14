@@ -1,0 +1,7 @@
+.root {
+	@apply px-2 py-1;
+	@apply cursor-pointer;
+}
+.active {
+	@apply bg-primary text-white;
+}
