@@ -2,6 +2,7 @@
 	@apply flex flex-col items-center justify-center;
 	@apply w-full;
 	@apply mb-10;
+	@apply px-5;
 }
 
 .labels {
