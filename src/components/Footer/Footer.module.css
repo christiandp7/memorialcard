@@ -17,13 +17,14 @@
 .backToHome {
 	@apply flex justify-end items-center;
 	@apply px-2 py-1;
+	@apply text-xs md:text-base;
 	&:hover .leftArrow {
 		@apply opacity-100;
 	}
 }
 
 .leftArrow {
-	@apply mr-2;
-	@apply opacity-0;
+	@apply mr-1 md:mr-2;
+	@apply opacity-100 md:opacity-0;
 	@apply transition-opacity ease-in;
 }
