@@ -13,7 +13,15 @@ const PlaceInput = () => {
 	const [address, setaddress] = useState('')
 
 	const handleChange = (addr: string) => {
-		setaddress(addr)
+		if (addr.length < 40) {
+			setaddress(addr)
+		}
+	}
+
+	const handleSubmit = (e: React.SyntheticEvent): void => {
+		e.preventDefault()
+		// trigger modal
+		console.log(address)
 	}
 
 	const handleSelect = (addr: string) => {
@@ -31,43 +39,50 @@ const PlaceInput = () => {
 				<p>emplacement</p>
 				<p>location</p>
 			</div>
-			<PlacesAutocomplete
-				value={address}
-				onChange={handleChange}
-				onSelect={handleSelect}>
-				{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div className={s.inputContainer}>
-						<input
-							{...getInputProps({
-								placeholder: 'ciudad, país',
-								className: s.inputBox,
-							})}
-						/>
-						<div className={s.inputIcon}>
-							{loading ? (
-								<Loader type="Oval" color="#AAAAAA" width={18} height={18} />
-							) : (
-								<LocationIcon />
-							)}
+			<form onSubmit={handleSubmit} className={s.form}>
+				<PlacesAutocomplete
+					value={address}
+					onChange={handleChange}
+					onSelect={handleSelect}>
+					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+						<div className={s.inputContainer}>
+							<input
+								{...getInputProps({
+									placeholder: 'ciudad, país',
+									className: s.inputBox,
+									name: 'place',
+									maxLength: 40,
+								})}
+							/>
+							<div className={s.inputIcon}>
+								{loading ? (
+									<Loader type="Oval" color="#AAAAAA" width={18} height={18} />
+								) : (
+									<LocationIcon />
+								)}
+							</div>
+							<div
+								className={cn(s.dropdownContainer, {
+									[s.dropDownOpen]: suggestions.length > 0,
+								})}>
+								{suggestions.map(suggestion => (
+									<React.Fragment key={suggestion.id}>
+										<SuggestionItem
+											{...getSuggestionItemProps(suggestion, {
+												suggestion,
+												loading,
+											})}
+										/>
+									</React.Fragment>
+								))}
+							</div>
 						</div>
-						<div
-							className={cn(s.dropdownContainer, {
-								[s.dropDownOpen]: suggestions.length > 0,
-							})}>
-							{suggestions.map(suggestion => (
-								<React.Fragment key={suggestion.id}>
-									<SuggestionItem
-										{...getSuggestionItemProps(suggestion, {
-											suggestion,
-											loading,
-										})}
-									/>
-								</React.Fragment>
-							))}
-						</div>
-					</div>
-				)}
-			</PlacesAutocomplete>
+					)}
+				</PlacesAutocomplete>
+				<div className={s.buttonContainer}>
+					{address.length > 5 && <button className={s.submitButton}>Go!</button>}
+				</div>
+			</form>
 		</div>
 	)
 }

@@ -10,9 +10,13 @@
 		@apply text-center;
 	}
 }
+.form {
+	@apply w-full;
+	@apply w-full max-w-sm;
+}
 
 .inputContainer {
-	@apply relative w-full max-w-sm;
+	@apply relative w-full;
 	@apply mt-4;
 }
 
@@ -42,10 +46,22 @@
 
 .dropdownContainer {
 	@apply absolute left-0 top-full;
-	/* top: calc(100% - 1px); */
 	@apply w-full;
+	@apply z-10;
 }
 .dropDownOpen {
 	@apply border-l-[1px] border-r-[1px] border-b-[1px];
 	@apply border-primary border-solid;
+}
+
+.buttonContainer {
+	@apply mt-3;
+	@apply h-10;
+}
+
+.submitButton {
+	@apply bg-primary text-white;
+	@apply px-4 py-1;
+	@apply select-none;
+	@apply hover:bg-gray-800;
 }
