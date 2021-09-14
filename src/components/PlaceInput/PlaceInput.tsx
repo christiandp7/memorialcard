@@ -10,11 +10,11 @@ import Loader from 'react-loader-spinner'
 import SuggestionItem from '@components/SuggestionItem'
 
 const PlaceInput = () => {
-	const [address, setaddress] = useState('')
+	const [address, setAddress] = useState('')
 
 	const handleChange = (addr: string) => {
 		if (addr.length < 40) {
-			setaddress(addr)
+			setAddress(addr)
 		}
 	}
 
@@ -71,6 +71,7 @@ const PlaceInput = () => {
 											{...getSuggestionItemProps(suggestion, {
 												suggestion,
 												loading,
+												setAddress,
 											})}
 										/>
 									</React.Fragment>
