@@ -1,10 +1,24 @@
 .root {
-  @apply w-full;
-  @apply absolute bottom-0 left-0;
-  @apply flex justify-between items-center;
-  @apply px-10 pb-5;
+	@apply w-full;
+	@apply absolute bottom-0 left-0;
+	@apply flex justify-between items-center;
+	@apply px-10 pb-5;
 }
 
 .address {
-  letter-spacing: 0.2rem;
+	letter-spacing: 0.2rem;
+}
+
+.backToHome {
+	@apply flex justify-end items-center;
+	@apply px-2 py-1;
+	&:hover .leftArrow {
+		@apply opacity-100;
+	}
+}
+
+.leftArrow {
+	@apply mr-2;
+	@apply opacity-0;
+	@apply transition-opacity ease-in;
 }

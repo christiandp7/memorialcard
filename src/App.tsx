@@ -1,13 +1,19 @@
 // import "./styles/main";
 import React from 'react'
-import Layout from './components/Layout'
-import PlaceInput from './components/PlaceInput'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from '@pages/Home'
+import About from '@pages/About'
+import NotFound from '@pages/NotFound'
 
 function App() {
 	return (
-		<Layout>
-			<PlaceInput />
-		</Layout>
+		<Router>
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/about" component={About} />
+				<Route path="/*" component={NotFound} />
+			</Switch>
+		</Router>
 	)
 }
 
