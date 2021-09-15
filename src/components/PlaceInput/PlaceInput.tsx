@@ -16,11 +16,14 @@ import {
 	ComboboxList,
 	ComboboxOption,
 } from '@reach/combobox'
+import CardModal from '@components/CardModal'
+import type { CardModalData } from '@components/CardModal'
 // import '@reach/combobox/styles.css'
 
 const MAX_LENGTH = 40
 
 const PlaceInput = () => {
+	const [modal, setModal] = useState<CardModalData>({ open: false, place: '' })
 	const {
 		ready,
 		value,
@@ -57,7 +60,11 @@ const PlaceInput = () => {
 
 	const handleSubmit = (e: SyntheticEvent): void => {
 		e.preventDefault()
-		console.log(value)
+		// console.log(value)
+		setModal({
+			open: true,
+			place: value,
+		})
 	}
 
 	return (
@@ -114,6 +121,7 @@ const PlaceInput = () => {
 					)}
 				</div>
 			</form>
+			<CardModal modal={modal} setModal={setModal} />
 		</div>
 	)
 }

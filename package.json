@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@reach/combobox": "^0.16.1",
+    "@types/react-modal": "^3.12.1",
     "classnames": "^2.3.1",
     "react": "^17.0.0",
     "react-cool-onclickoutside": "^1.6.2",
