@@ -20,19 +20,20 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 			//.75
 			width: 527.25,
 			height: 620.25,
-			scale: 1.25,
+			scale: 1.15,
+			// scale: 0.75,
 		},
 		md: {
 			//.5
 			width: 351.5,
 			height: 413.5,
-			scale: 1.5,
+			scale: 1.75,
 		},
 		default: {
 			// .35
 			width: 246.05,
 			height: 289.45,
-			scale: 1.75,
+			scale: 2.5,
 		},
 	}
 
@@ -50,7 +51,7 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 			return sizes.lg.height
 		}
 		if (isMd) {
-			return sizes.lg.height
+			return sizes.md.height
 		}
 		return sizes.default.height
 	}
@@ -91,9 +92,9 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 				<Pdf
 					targetRef={ref}
 					filename="card.pdf"
-					scale={scaleK() * 1.25}
-					x={80}
-					y={80}
+					scale={scaleK()}
+					x={50}
+					y={50}
 					onComplete={closeModal}
 					options={{ unit: 'px' }}>
 					{({ toPdf }: any) => (

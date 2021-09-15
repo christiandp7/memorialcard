@@ -6,7 +6,7 @@
 .wrapper {
 	@apply relative;
 	/* @apply w-full; */
-	@apply max-w-[525px];
+	/* @apply p-1; */
 }
 
 .placeContainer {
