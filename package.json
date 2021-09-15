@@ -8,15 +8,21 @@
   },
   "dependencies": {
     "@reach/combobox": "^0.16.1",
+    "@react-pdf/renderer": "^2.0.19",
     "@types/react-modal": "^3.12.1",
     "classnames": "^2.3.1",
+    "framer-motion": "^4.1.17",
+    "jspdf": "^2.4.0",
     "react": "^17.0.0",
     "react-cool-onclickoutside": "^1.6.2",
+    "react-custom-scrollbars-2": "^4.4.0",
     "react-dom": "^17.0.0",
     "react-icons": "^4.2.0",
     "react-loader-spinner": "^4.0.0",
     "react-modal": "^3.14.3",
+    "react-responsive": "^9.0.0-beta.4",
     "react-router-dom": "^5.3.0",
+    "react-to-pdf": "^0.0.14",
     "use-places-autocomplete": "^1.9.4"
   },
   "devDependencies": {

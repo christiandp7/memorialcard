@@ -1,0 +1,30 @@
+.doc {
+	@apply relative py-1 md:py-8;
+	@apply flex flex-col items-center justify-center;
+}
+
+.wrapper {
+	@apply relative;
+	/* @apply w-full; */
+	@apply max-w-[525px];
+}
+
+.placeContainer {
+	@apply absolute w-full;
+	@apply top-0 left-0;
+	@apply h-1/4;
+	@apply flex items-center justify-center;
+}
+.placeText {
+	@apply whitespace-nowrap;
+	@apply text-center;
+}
+
+.template {
+	/* original 703x827 */
+}
+
+.printContainer {
+	@apply w-full flex justify-end mt-4;
+	@apply sm:absolute sm:bottom-0 sm:right-0;
+}
