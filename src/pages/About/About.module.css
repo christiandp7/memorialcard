@@ -1,0 +1,8 @@
+.rte {
+	@apply w-full max-w-4xl px-6 py-8 mt-6 mb-10;
+	@apply text-justify;
+}
+
+p {
+	@apply mb-4;
+}
