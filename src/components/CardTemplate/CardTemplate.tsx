@@ -57,12 +57,15 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 	}
 	const fontK = (): number => {
 		if (isLg) {
-			return 80
+			// return 77
+			return 3.5
 		}
 		if (isMd) {
-			return 50
+			// return 50
+			return 2.3
 		}
-		return 35
+		// return 34
+		return 1.55
 	}
 	const scaleK = (): number => {
 		if (isLg) {
@@ -74,6 +77,21 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 		return sizes.default.scale
 	}
 
+	const getPlace = (text: string): string | JSX.Element => {
+		if (text.length > 23) {
+			const main = text.slice(0, text.indexOf(','))
+			const secondary = text.slice(text.indexOf(',') + 2, text.length)
+			console.log(main + secondary)
+			return (
+				<>
+					{main},<br />
+					{secondary}
+				</>
+			)
+		}
+		return text
+	}
+
 	return (
 		<>
 			<div className={s.doc}>
@@ -83,9 +101,10 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 						<div
 							className={s.placeText}
 							style={{
-								fontSize: `${fontK() / place.length}rem`,
+								// fontSize: `${fontK() / place.length}rem`,
+								fontSize: `${fontK()}rem`,
 							}}>
-							{place}
+							{getPlace(place)}
 						</div>
 					</div>
 				</div>
@@ -93,7 +112,7 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 					targetRef={ref}
 					filename="card.pdf"
 					scale={scaleK()}
-					x={50}
+					x={55}
 					y={50}
 					onComplete={closeModal}
 					options={{ unit: 'px' }}>

@@ -1,5 +1,12 @@
+.modalRoot {
+	@apply fixed top-0 left-0 right-0 bottom-0;
+	@apply w-full h-full;
+	@apply flex items-center justify-center;
+	@apply z-50;
+}
+
 .modal {
-	@apply bg-white w-full max-w-[90vw] sm:max-w-[75vw] lg:max-w-4xl mx-auto rounded shadow-lg z-50 overflow-y-auto;
+	@apply bg-white w-full max-w-[90vw] sm:max-w-[75vw] lg:max-w-4xl mx-auto rounded shadow-lg z-10 overflow-y-auto;
 	@apply px-4 py-3;
 	@apply transition-all ease-in duration-300;
 	@apply outline-none;
@@ -7,16 +14,20 @@
 }
 
 .overlay {
-	@apply fixed top-0 left-0 right-0 bottom-0;
+	@apply absolute top-0 left-0 right-0 bottom-0;
 	@apply w-full h-full;
-	@apply flex items-center justify-center;
-	@apply bg-gray-300/50;
+	@apply bg-gray-300/70;
 }
 
 /* Header */
 .modalHeader {
 	@apply w-full flex items-center justify-end;
 }
-.close {
+/* .close {
 	@apply flex flex-col items-center mt-4 mr-4 text-white text-sm z-50;
+} */
+
+.closeButton {
+	@apply p-2 rounded-full;
+	@apply hover:bg-gray-100 active:bg-gray-300;
 }

@@ -12,12 +12,14 @@
 .placeContainer {
 	@apply absolute w-full;
 	@apply top-0 left-0;
-	@apply h-1/4;
+	@apply h-[28%];
 	@apply flex items-center justify-center;
 }
 .placeText {
-	@apply whitespace-nowrap;
+	/* @apply whitespace-nowrap; */
 	@apply text-center;
+	@apply font-schmalfette;
+	line-height: 1;
 }
 
 .template {

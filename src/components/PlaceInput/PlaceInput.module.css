@@ -58,7 +58,7 @@
 .option {
 	@apply px-2 py-1;
 	@apply cursor-pointer;
-	@apply hover:bg-primary hover:text-white;
+	@apply hover:bg-primary hover:text-white active:bg-gray-600;
 	&[aria-selected='true'] {
 		@apply bg-primary text-white;
 	}
@@ -73,5 +73,5 @@
 	@apply bg-primary text-white;
 	@apply px-4 py-1;
 	@apply select-none;
-	@apply hover:bg-gray-800;
+	@apply hover:bg-gray-800 active:bg-gray-600;
 }

@@ -18,7 +18,7 @@ const Footer: FC<Props> = ({ about = false }) => {
 				{about ? (
 					<Link to="/">
 						<span className={s.backToHome}>
-							<BsArrowLeft className={s.leftArrow} /> Home
+							<BsArrowLeft />
 						</span>
 					</Link>
 				) : (

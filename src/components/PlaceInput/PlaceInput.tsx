@@ -8,7 +8,6 @@ import usePlacesAutocomplete, {
 	getLatLng,
 	Suggestion,
 } from 'use-places-autocomplete'
-import useOnclickOutside from 'react-cool-onclickoutside'
 import {
 	Combobox,
 	ComboboxInput,
@@ -18,6 +17,7 @@ import {
 } from '@reach/combobox'
 import CardModal from '@components/CardModal'
 import type { CardModalData } from '@components/CardModal'
+import { BsArrowRight } from 'react-icons/bs'
 // import '@reach/combobox/styles.css'
 
 const MAX_LENGTH = 40
@@ -31,20 +31,6 @@ const PlaceInput = () => {
 		setValue,
 		clearSuggestions,
 	} = usePlacesAutocomplete({
-		requestOptions: {
-			/* Define search scope here */
-			// types: [
-			// 	'country',
-			// 	'locality',
-			// 	'political',
-			// 	'geocode',
-			// 	'sublocality',
-			// 	'administrative_area_level_3',
-			// 	'postal_code',
-			// 	'town_square',
-			// 	'neighborhood',
-			// ],
-		},
 		debounce: 300,
 	})
 
@@ -116,12 +102,12 @@ const PlaceInput = () => {
 				<div className={s.buttonContainer}>
 					{value.length > 6 && (
 						<button type="submit" className={s.submitButton}>
-							Go!
+							<BsArrowRight fontSize="1.5rem" />
 						</button>
 					)}
 				</div>
 			</form>
-			<CardModal modal={modal} setModal={setModal} />
+			<CardModal modal={modal} setModal={setModal} setValue={setValue} />
 		</div>
 	)
 }
