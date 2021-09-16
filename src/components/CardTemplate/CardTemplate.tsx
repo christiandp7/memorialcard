@@ -78,7 +78,7 @@ const CardTemplate: FC<Props> = ({ place, closeModal }) => {
 	}
 
 	const getPlace = (text: string): string | JSX.Element => {
-		if (text.length > 23) {
+		if (text.length > 23 && text.includes(',')) {
 			const main = text.slice(0, text.indexOf(','))
 			const secondary = text.slice(text.indexOf(',') + 2, text.length)
 			console.log(main + secondary)

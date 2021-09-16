@@ -5,8 +5,6 @@
 
 .wrapper {
 	@apply relative;
-	/* @apply w-full; */
-	/* @apply p-1; */
 }
 
 .placeContainer {
@@ -16,7 +14,6 @@
 	@apply flex items-center justify-center;
 }
 .placeText {
-	/* @apply whitespace-nowrap; */
 	@apply text-center;
 	@apply font-schmalfette;
 	line-height: 1;
